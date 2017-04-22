@@ -1,5 +1,11 @@
 var request = require('supertest');
-var app = require('./app')
+var app = require('./app');
+
+var redis = require('redis');
+var client = redis.createClient();
+client.select('test'.length);
+client.flushdb();
+
 
 describe('Request to the root path', function(){
   it('Returns a 200 status code', function(done){
@@ -37,7 +43,7 @@ describe('Listening cities on /cities', function(){
   it('Returns initial cities', function(done){
     request(app)
       .get('/cities')
-      .expect(JSON.stringify(['Lotopia', 'Caspiana', 'Indigo']), done);
+      .expect(JSON.stringify([]), done);
   });
 });
 
