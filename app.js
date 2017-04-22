@@ -6,10 +6,20 @@ var urlencode = bodyParser.urlencoded({ extended: false });
 
 app.use(express.static('public'));
 
+// Redis connection
 var redis = require('redis');
-var client = redis.createClient();
+var url = require('url');
+if (process.env.REDISTOGO_URL){
+  var rtg = url.parse(process.env.REDISTOGO_URL);
+  var client = redis.createClient(rtg.port, rtg.hostname);
+  redis.auth(rtg.auth.split(":")[1]);
+} else {
+  var client = redis.createClient();
+}
 
-client.select(process.env.NODE_ENV.length || 'development'.length);
+var node_env = process.env.NODE_ENV || 'development';
+client.select(node_env.length);
+// End Redis connection
 
 app.get('/', function(request, response){
   response.send('OK');
