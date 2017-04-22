@@ -15,10 +15,9 @@ if (process.env.REDISTOGO_URL){
   redis.auth(rtg.auth.split(":")[1]);
 } else {
   var client = redis.createClient();
+  var node_env = process.env.NODE_ENV || 'development';
+  client.select(node_env.length);
 }
-
-var node_env = process.env.NODE_ENV || 'development';
-client.select(node_env.length);
 // End Redis connection
 
 app.get('/', function(request, response){
