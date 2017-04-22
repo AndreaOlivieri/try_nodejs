@@ -1,0 +1,22 @@
+{
+  "name": "try_nodejs",
+  "version": "1.0.0",
+  "description": "First application with nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreaOlivieri/try_nodejs.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Andrea Olivieri <andrea.olivieri1991@gmail.com> (http://andrea-olivieri.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreaOlivieri/try_nodejs/issues"
+  },
+  "homepage": "https://github.com/AndreaOlivieri/try_nodejs#readme"
+}
